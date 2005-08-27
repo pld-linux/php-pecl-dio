@@ -2,6 +2,7 @@
 %define		_status		stable
 
 Summary:	%{_modname} - Direct I/O functions
+Summary(pl):	%{_modname} - funkcje bezpo¶redniego we/wy
 Name:		php-pecl-%{_modname}
 Version:	not-yet
 Release:	1
@@ -20,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		extensionsdir	%{_libdir}/php
 
 %description
-PHP supports the direct io functions as described in the Posix
+PHP supports the direct I/O functions as described in the Posix
 Standard (Section 6) for performing I/O functions at a lower level
 than the C-Language stream I/O functions (fopen(), fread(),..). The
 use of the DIO functions should be considered only when direct control
@@ -28,6 +29,17 @@ of a device is needed. In all other cases, the standard filesystem
 functions are more than adequate.
 
 In PECL status of this extension is: %{_status}.
+
+%description -l pl
+PHP obs³uguje funkcje bezpo¶redniego we/wy wg opisu w standardzie
+POSIX (sekcji 6) do wykonywania operacji we/wy na poziomie ni¿szym ni¿
+funkcje strumieni we/wy w jêzyku C (fopen(), fread()...). U¿ycie
+funkcji DIO powinno byæ rozwa¿ane tylko je¶li potrzebna jest
+bezpo¶rednia kontrola nad urz±dzeniem. We wszystkich innych
+przypadkach odpowiedniejsze s± standardowe funkcje operacji na
+systemie plików.
+
+To rozszerzenie ma w PECL status: %{_status}.
 
 %prep
 %setup -q -c
