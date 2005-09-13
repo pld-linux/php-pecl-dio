@@ -11,7 +11,6 @@ Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	ee90a55b753975faac607f4230ece2b4
 URL:		http://pecl.php.net/package/dio/
-BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	php-devel >= 3:5.0.0
 Requires:	php-common >= 3:5.0.0
