@@ -1,21 +1,23 @@
 %define		_modname	dio
-%define		_status		stable
+%define		_status		beta
 %define		_sysconfdir	/etc/php
 %define		extensionsdir	%(php-config --extension-dir 2>/dev/null)
 Summary:	%{_modname} - Direct I/O functions
 Summary(pl):	%{_modname} - funkcje bezpo¶redniego we/wy
 Name:		php-pecl-%{_modname}
-Version:	not-yet
-Release:	1
+Version:	5.0
+%define	_rc rc1
+Release:	0.%{_rc}.1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
-# Source0-md5:	ee90a55b753975faac607f4230ece2b4
+#Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
+Source0:	%{_modname}.tgz
+# Source0-md5:	b926091229d356253f9f30f99e1e2253
 URL:		http://pecl.php.net/package/dio/
-BuildRequires:	libxml2-devel
 BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.254
 %{?requires_php_extension}
+Obsoletes:	php-dio
 Requires:	%{_sysconfdir}/conf.d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,19 +43,20 @@ systemie plików.
 To rozszerzenie ma w PECL status: %{_status}.
 
 %prep
-%setup -q -c
+%setup -q -n %{_modname}
 
 %build
-cd %{_modname}-%{version}
 phpize
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/conf.d,%{extensionsdir}}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/conf.d
 
-install %{_modname}-%{version}/modules/%{_modname}.so $RPM_BUILD_ROOT%{extensionsdir}
+%{__make} install \
+	INSTALL_ROOT=$RPM_BUILD_ROOT \
+	EXTENSION_DIR=%{extensionsdir}
 cat <<'EOF' > $RPM_BUILD_ROOT%{_sysconfdir}/conf.d/%{_modname}.ini
 ; Enable %{_modname} extension module
 extension=%{_modname}.so
