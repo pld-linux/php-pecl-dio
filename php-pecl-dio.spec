@@ -15,7 +15,7 @@ Source0:	%{_modname}.tgz
 # Source0-md5:	b926091229d356253f9f30f99e1e2253
 URL:		http://pecl.php.net/package/dio/
 BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.254
+BuildRequires:	rpmbuild(macros) >= 1.322
 %{?requires_php_extension}
 Obsoletes:	php-dio
 Requires:	%{_sysconfdir}/conf.d
