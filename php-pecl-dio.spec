@@ -2,7 +2,7 @@
 %define		_status		beta
 %define		_rc rc1
 Summary:	%{_modname} - Direct I/O functions
-Summary(pl.UTF-8):   %{_modname} - funkcje bezpośredniego we/wy
+Summary(pl.UTF-8):	%{_modname} - funkcje bezpośredniego we/wy
 Name:		php-pecl-%{_modname}
 Version:	5.0
 Release:	0.%{_rc}.1
