@@ -1,16 +1,16 @@
-%define		_modname	dio
-%define		_status		beta
-%define		_rc rc1
-Summary:	%{_modname} - Direct I/O functions
-Summary(pl.UTF-8):	%{_modname} - funkcje bezpośredniego we/wy
-Name:		php-pecl-%{_modname}
-Version:	5.0
-Release:	0.%{_rc}.1
+%define		modname	dio
+%define		status	beta
+%define		subver	RC4
+%define		rel		1
+Summary:	%{modname} - Direct I/O functions
+Summary(pl.UTF-8):	%{modname} - funkcje bezpośredniego we/wy
+Name:		php-pecl-%{modname}
+Version:	0.0.4
+Release:	0.%{subver}.%{rel}
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-#Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
-Source0:	%{_modname}.tgz
-# Source0-md5:	b926091229d356253f9f30f99e1e2253
+Source0:	http://pecl.php.net/get/%{modname}-%{version}%{subver}.tgz
+# Source0-md5:	9baedea5fdfc7b7e303de6591cdc3187
 URL:		http://pecl.php.net/package/dio/
 BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.344
@@ -27,7 +27,7 @@ use of the DIO functions should be considered only when direct control
 of a device is needed. In all other cases, the standard filesystem
 functions are more than adequate.
 
-In PECL status of this extension is: %{_status}.
+In PECL status of this extension is: %{status}.
 
 %description -l pl.UTF-8
 PHP obsługuje funkcje bezpośredniego we/wy wg opisu w standardzie
@@ -38,10 +38,11 @@ bezpośrednia kontrola nad urządzeniem. We wszystkich innych
 przypadkach odpowiedniejsze są standardowe funkcje operacji na
 systemie plików.
 
-To rozszerzenie ma w PECL status: %{_status}.
+To rozszerzenie ma w PECL status: %{status}.
 
 %prep
-%setup -q -n %{_modname}
+%setup -qc
+mv %{modname}-%{version}*/* .
 
 %build
 phpize
@@ -53,11 +54,11 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d
 
 %{__make} install \
-	INSTALL_ROOT=$RPM_BUILD_ROOT \
-	EXTENSION_DIR=%{php_extensiondir}
-cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{_modname}.ini
-; Enable %{_modname} extension module
-extension=%{_modname}.so
+	EXTENSION_DIR=%{php_extensiondir} \
+	INSTALL_ROOT=$RPM_BUILD_ROOT
+cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
+; Enable %{modname} extension module
+extension=%{modname}.so
 EOF
 
 %clean
@@ -73,5 +74,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{_modname}.ini
-%attr(755,root,root) %{php_extensiondir}/%{_modname}.so
+%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{modname}.ini
+%attr(755,root,root) %{php_extensiondir}/%{modname}.so
