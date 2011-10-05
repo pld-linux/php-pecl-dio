@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	tests		# build without tests
+
 %define		modname	dio
 %define		status	beta
 %define		subver	RC4
@@ -43,11 +47,19 @@ To rozszerzenie ma w PECL status: %{status}.
 %prep
 %setup -qc
 mv %{modname}-%{version}*/* .
+# all files with 1970 timestamp
+find -newer php_dio_stream_wrappers.h -o -print | xargs touch --reference %{SOURCE0}
 
 %build
 phpize
 %configure
 %{__make}
+
+%if %{with tests}
+export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 MALLOC_CHECK_=2
+unset TZ LANG LC_ALL || :
+%{__make} test
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
