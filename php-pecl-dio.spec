@@ -5,7 +5,7 @@
 %define		modname	dio
 %define		status	beta
 %define		subver	RC4
-%define		rel		2
+%define		rel		3
 Summary:	%{modname} - Direct I/O functions
 Summary(pl.UTF-8):	%{modname} - funkcje bezpośredniego we/wy
 Name:		php-pecl-%{modname}
