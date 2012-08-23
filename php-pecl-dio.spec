@@ -5,7 +5,7 @@
 %define		modname	dio
 %define		status	beta
 %define		subver	RC4
-%define		rel		3
+%define		rel		4
 Summary:	%{modname} - Direct I/O functions
 Summary(pl.UTF-8):	%{modname} - funkcje bezpośredniego we/wy
 Name:		php-pecl-%{modname}
@@ -19,7 +19,7 @@ URL:		http://pecl.php.net/package/dio/
 BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.344
 %{?requires_php_extension}
-Requires:	php-common >= 4:5.0.4
+Requires:	php(core) >= 5.0.4
 Obsoletes:	php-dio
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
