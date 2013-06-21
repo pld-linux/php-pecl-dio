@@ -2,13 +2,14 @@
 # Conditional build:
 %bcond_without	tests		# build without tests
 
+%define		php_name	php%{?php_suffix}
 %define		modname	dio
 %define		status	beta
 %define		subver	RC4
 %define		rel		4
 Summary:	%{modname} - Direct I/O functions
 Summary(pl.UTF-8):	%{modname} - funkcje bezpośredniego we/wy
-Name:		php-pecl-%{modname}
+Name:		%{php_name}-pecl-%{modname}
 Version:	0.0.4
 Release:	0.%{subver}.%{rel}
 License:	PHP 2.02
@@ -16,8 +17,8 @@ Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}%{subver}.tgz
 # Source0-md5:	9baedea5fdfc7b7e303de6591cdc3187
 URL:		http://pecl.php.net/package/dio/
-BuildRequires:	php-devel >= 3:5.0.0
-BuildRequires:	rpmbuild(macros) >= 1.344
+BuildRequires:	%{php_name}-devel >= 3:5.0.0
+BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires:	php(core) >= 5.0.4
 Obsoletes:	php-dio
