@@ -4,18 +4,15 @@
 
 %define		php_name	php%{?php_suffix}
 %define		modname	dio
-%define		status	beta
-%define		subver	RC4
-%define		rel		4
 Summary:	%{modname} - Direct I/O functions
 Summary(pl.UTF-8):	%{modname} - funkcje bezpośredniego we/wy
 Name:		%{php_name}-pecl-%{modname}
-Version:	0.0.4
-Release:	0.%{subver}.%{rel}
+Version:	0.0.7
+Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
-Source0:	http://pecl.php.net/get/%{modname}-%{version}%{subver}.tgz
-# Source0-md5:	9baedea5fdfc7b7e303de6591cdc3187
+Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
+# Source0-md5:	a1a4df428a17dbe1ab4277b492dfa052
 URL:		http://pecl.php.net/package/dio/
 BuildRequires:	%{php_name}-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.650
@@ -32,8 +29,6 @@ use of the DIO functions should be considered only when direct control
 of a device is needed. In all other cases, the standard filesystem
 functions are more than adequate.
 
-In PECL status of this extension is: %{status}.
-
 %description -l pl.UTF-8
 PHP obsługuje funkcje bezpośredniego we/wy wg opisu w standardzie
 POSIX (sekcji 6) do wykonywania operacji we/wy na poziomie niższym niż
@@ -42,8 +37,6 @@ funkcji DIO powinno być rozważane tylko jeśli potrzebna jest
 bezpośrednia kontrola nad urządzeniem. We wszystkich innych
 przypadkach odpowiedniejsze są standardowe funkcje operacji na
 systemie plików.
-
-To rozszerzenie ma w PECL status: %{status}.
 
 %prep
 %setup -qc
