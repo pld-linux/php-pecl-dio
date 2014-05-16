@@ -8,18 +8,18 @@ Summary:	%{modname} - Direct I/O functions
 Summary(pl.UTF-8):	%{modname} - funkcje bezpośredniego we/wy
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.0.7
-Release:	3
+Release:	4
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	a1a4df428a17dbe1ab4277b492dfa052
 URL:		http://pecl.php.net/package/dio/
-BuildRequires:	%{php_name}-devel >= 3:5.0.0
+BuildRequires:	%{php_name}-devel >= 3:5.0.4
 BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
-Requires:	php(core) >= 5.0.4
-Obsoletes:	php-dio
 Provides:	php(%{modname}) = %{version}
+Obsoletes:	php-dio
+Obsoletes:	php-pecl-dio < 0.0.7-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
